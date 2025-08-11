@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Guida alla Navigazione del Sito – IIS Mendel</title>
+  <meta name="description" content="Guida semplice e veloce per orientarsi nel sito dell'IIS Mendel: La Scuola, Servizi, Novità, Orientamento, Contatti."/>
+  <style>
+    .guida-navigazione-container{max-width:1200px;margin:20px auto;padding:20px;font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;line-height:1.6}
+    .guida-navigazione-container *{box-sizing:border-box}
+    .guida-header{background:linear-gradient(135deg,#2c5530,#4a7c59);color:#fff;text-align:center;padding:40px 20px;border-radius:15px;margin-bottom:20px;box-shadow:0 6px 20px rgba(44,85,48,.25)}
+    .guida-header h1{font-size:2.2em;margin-bottom:10px;text-shadow:2px 2px 4px rgba(0,0,0,.3);color:#fff!important;font-weight:800}
+    .guida-header h2{font-size:1.1em;font-weight:400;opacity:.9;margin:0;color:#fff!important}
+    /* CTA centrale */
+    .guida-cta{display:flex;justify-content:center;margin:18px 0 30px}
+    .guida-cta .cta-btn{appearance:none;border:0;border-radius:999px;padding:14px 22px;font-size:1rem;font-weight:700;cursor:pointer;background:#7db46c;color:#fff;box-shadow:0 6px 20px rgba(44,85,48,.25);transition:transform .18s ease,box-shadow .18s ease}
+    .guida-cta .cta-btn:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(44,85,48,.32);background:#4a7c59}
+
+    .guida-navigation{background:#fff;border-radius:15px;padding:24px;margin-bottom:30px;box-shadow:0 2px 10px rgba(44,85,48,.1);border:1px solid #e1e8e1}
+    .guida-nav-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:16px}
+    .guida-nav-item{background:#fff;border:2px solid #e1e8e1;border-radius:10px;padding:18px;cursor:pointer;transition:all .25s ease;color:#2c3e50}
+    .guida-nav-item:hover{border-color:#2c5530;transform:translateY(-3px);box-shadow:0 4px 15px rgba(44,85,48,.2);background:#f9fff9}
+    .guida-nav-item h3{color:#1a3d1f;margin:0 0 6px;font-weight:800;font-size:1.05em}
+    .guida-nav-item p{margin:0;color:#666}
+
+    .guida-section{background:#fff;border-radius:15px;margin-bottom:22px;overflow:hidden;box-shadow:0 2px 10px rgba(44,85,48,.1);border:1px solid #e1e8e1}
+    .guida-section-header{background:#2c5530;color:#fff;padding:16px 22px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;transition:all .25s ease}
+    .guida-section-header:hover{background:#4a7c59}
+    .guida-section-title{font-size:1.15em;font-weight:700;color:#fff;margin:0}
+    .guida-section-content{padding:22px;display:none}
+    .guida-section.active .guida-section-content{display:block}
+    .guida-section.active .guida-toggle-icon{transform:rotate(180deg)}
+    .guida-toggle-icon{transition:all .25s ease;font-size:1.1em;color:#fff}
+    .guida-subsection{margin-bottom:18px;padding:16px;background:#f8fdf9;border-radius:10px;border-left:4px solid #7db46c}
+    .guida-subsection h4{color:#1a3d1f;margin:0 0 10px;font-size:1.05em;font-weight:700}
+    .guida-subsection ul,.guida-subsection ol{margin:0;padding-left:20px}
+    .guida-subsection li{margin-bottom:6px;color:#2c3e50}
+
+    .guida-highlight-box{background:linear-gradient(135deg,#7db46c,#4a7c59);color:#fff;padding:16px;border-radius:10px;margin:16px 0;box-shadow:0 2px 10px rgba(44,85,48,.1)}
+    .guida-highlight-box strong{color:#fff}
+    .guida-tips{background:#f8fdf9;border:2px dashed #7db46c;border-radius:10px;padding:16px;margin:16px 0}
+
+    .guida-contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+    .guida-contact-card{background:#f8fdf9;padding:16px;border-radius:10px;border:1px solid #e1e8e1;text-align:center}
+    .guida-contact-card h4{color:#1a3d1f;margin-bottom:8px;font-size:1.05em}
+
+    .guida-scroll-top{position:fixed;bottom:20px;right:20px;background:#7db46c;color:#fff;border:0;border-radius:50%;width:45px;height:45px;cursor:pointer;box-shadow:0 2px 10px rgba(44,85,48,.2);transition:all .25s ease;opacity:0;z-index:100;font-size:16px}
+    .guida-scroll-top.visible{opacity:1}
+    .guida-scroll-top:hover{background:#4a7c59;transform:scale(1.1)}
+
+    .guida-footer{margin-top:26px;text-align:center;font-size:.9rem;color:#24412a;background:#f1f7f3;border:1px solid #e1e8e1;border-radius:10px;padding:12px}
+
+    @media (max-width:768px){
+      .guida-header h1{font-size:1.8em}
+      .guida-nav-grid{grid-template-columns:1fr}
+      .guida-section-content{padding:18px}
+      .guida-navigation{padding:20px}
+    }
+  </style>
+</head>
+<body>
+<div class="guida-navigazione-container">
+
+  <!-- Header -->
+  <div class="guida-header">
+    <h1>GUIDA ALLA NAVIGAZIONE DEL SITO</h1>
+    <h2>Istituto di Istruzione Superiore "Gregorio Mendel"</h2>
+  </div>
+
+  <!-- CTA centrale -->
+  <div class="guida-cta">
+    <!-- Se vuoi, sostituisci href con l’URL GitHub Pages -->
+    <a id="ctaFullscreen" class="cta-btn" href="#" target="_blank" rel="noopener">Apri la webapp a tutto schermo</a>
+  </div>
+
+  <!-- Navigazione Rapida -->
+  <div class="guida-navigation">
+    <h2>NAVIGAZIONE RAPIDA</h2>
+    <p>Clicca sulle sezioni qui sotto per accedere direttamente alle informazioni che cerchi:</p>
+    <div class="guida-nav-grid" style="margin-top:14px">
+      <div class="guida-nav-item" onclick="guidaGoToSection('homepage')">
+        <h3>HOMEPAGE</h3><p>Notizie, eventi e informazioni principali</p>
+      </div>
+      <div class="guida-nav-item" onclick="guidaGoToSection('scuola')">
+        <h3>LA SCUOLA</h3><p>Organizzazione, persone, luoghi e carte</p>
+      </div>
+      <div class="guida-nav-item" onclick="guidaGoToSection('offerta')">
+        <h3>OFFERTA FORMATIVA</h3><p>Tecnico, Professionale, Corsi serali (IDA)</p>
+      </div>
+      <div class="guida-nav-item" onclick="guidaGoToSection('servizi')">
+        <h3>SERVIZI</h3><p>Per studenti, famiglie, docenti e ATA</p>
+      </div>
+      <div class="guida-nav-item" onclick="guidaGoToSection('orientamento')">
+        <h3>ORIENTAMENTO</h3><p>Entrata, uscita e progetti</p>
+      </div>
+      <div class="guida-nav-item" onclick="guidaGoToSection('comunicati')">
+        <h3>COMUNICATI</h3><p>Comunicati e rassegna</p>
+      </div>
+      <div class="guida-nav-item" onclick="guidaGoToSection('comunicazioni')">
+        <h3>CIRCOLARI E ALBO</h3><p>Documenti ufficiali</p>
+      </div>
+      <div class="guida-nav-item" onclick="guidaGoToSection('tutorial')">
+        <h3>GUIDA PASSO PASSO</h3><p>Tutorial rapidi</p>
+      </div>
+      <div class="guida-nav-item" onclick="guidaGoToSection('contatti')">
+        <h3>CONTATTI</h3><p>Numeri, email e orari</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- HOMEPAGE -->
+  <div class="guida-section" id="guida-homepage">
+    <div class="guida-section-header" onclick="guidaToggleSection('homepage')">
+      <h3 class="guida-section-title">HOMEPAGE - La Pagina Principale</h3><span class="guida-toggle-icon">▼</span>
+    </div>
+    <div class="guida-section-content">
+      <p>La homepage è la “porta d’ingresso” del sito e contiene le informazioni più recenti e importanti.</p>
+      <div class="guida-subsection">
+        <h4>Sezione Notizie e Circolari (in alto)</h4>
+        <ul>
+          <li>Ultime circolari della dirigenza</li>
+          <li>Comunicazioni urgenti</li>
+          <li>Notizie di attualità scolastica</li>
+          <li>Eventi speciali</li>
+        </ul>
+      </div>
+      <div class="guida-subsection">
+        <h4>Sezione Eventi</h4>
+        <ul>
+          <li>Eventi in programma</li>
+          <li>Comunicati stampa</li>
+          <li>Simulazioni e attività speciali</li>
+        </ul>
+      </div>
+      <div class="guida-highlight-box"><strong>SUGGERIMENTO:</strong> Controlla la homepage regolarmente per rimanere aggiornato!</div>
+    </div>
+  </div>
+
+  <!-- LA SCUOLA -->
+  <div class="guida-section" id="guida-scuola">
+    <div class="guida-section-header" onclick="guidaToggleSection('scuola')">
+      <h3 class="guida-section-title">LA SCUOLA - Organizzazione, Luoghi e Carte</h3><span class="guida-toggle-icon">▼</span>
+    </div>
+    <div class="guida-section-content">
+      <div class="guida-subsection">
+        <h4>Organizzazione</h4>
+        <ul>
+          <li><strong>Storia e Mission</strong> – identità dell’Istituto</li>
+          <li><strong>Organigramma</strong> – ruoli, referenti e contatti</li>
+          <li><strong>PTOF 2025/2028</strong> – il piano dell’offerta formativa</li>
+        </ul>
+      </div>
+
+      <div class="guida-subsection">
+        <h4>Le Persone</h4>
+        <ul>
+          <li>Dirigente Scolastico e staff di direzione</li>
+          <li>Collegio Docenti, coordinatori di classe/indirizzo</li>
+          <li>Personale ATA (amministrativi e tecnici)</li>
+          <li>Consiglio di Istituto e componenti</li>
+        </ul>
+      </div>
+
+      <div class="guida-subsection">
+        <h4>I Luoghi</h4>
+        <ul>
+          <li>Azienda agraria e <strong>serre</strong> didattiche</li>
+          <li>Laboratori tecnico‑scientifici (scienze agrarie, trasformazione prodotti, informatica, topografia/CAD)</li>
+          <li>Aule, spazi comuni, biblioteca e aule multimediali</li>
+          <li>Aree esterne per esercitazioni pratiche (campo sperimentale, frutteto, vigneto didattico)</li>
+        </ul>
+      </div>
+
+      <div class="guida-subsection">
+        <h4>Le Carte della Scuola (principali)</h4>
+        <ul>
+          <li><strong>Regolamento d’Istituto</strong> e regolamenti di laboratorio</li>
+          <li><strong>Regolamento viaggi/uscite didattiche</strong></li>
+          <li><strong>Regolamento attività negoziale</strong> (acquisti/contratti)</li>
+          <li><strong>PAI – Piano Annuale per l’Inclusione</strong></li>
+          <li><strong>RAV/Piano di Miglioramento</strong>, Patto Educativo, Privacy</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- OFFERTA FORMATIVA -->
+  <div class="guida-section" id="guida-offerta">
+    <div class="guida-section-header" onclick="guidaToggleSection('offerta')">
+      <h3 class="guida-section-title">OFFERTA FORMATIVA - I Nostri Percorsi</h3><span class="guida-toggle-icon">▼</span>
+    </div>
+    <div class="guida-section-content">
+      <div class="guida-subsection">
+        <h4>Istituto Tecnico</h4>
+        <ul>
+          <li>Percorso agrario con materie caratterizzanti e laboratori</li>
+          <li>Sbocchi universitari e professionali</li>
+          <li>Quadri orari</li>
+        </ul>
+      </div>
+      <div class="guida-subsection">
+        <h4>Istituto Professionale</h4>
+        <ul>
+          <li>Formazione pratica e professionalizzante</li>
+          <li>Stage e PCTO in aziende del territorio</li>
+        </ul>
+      </div>
+      <div class="guida-subsection">
+        <h4>Corsi Serali (IDA)</h4>
+        <ul>
+          <li>Indirizzo “Servizi per l’agricoltura e sviluppo rurale” (per adulti e lavoratori)</li>
+          <li>Orari flessibili e riconoscimento crediti</li>
+        </ul>
+      </div>
+      <div class="guida-tips"><strong>Per scegliere il percorso:</strong> partecipa agli Open Day e contatta i referenti.</div>
+    </div>
+  </div>
+
+  <!-- SERVIZI -->
+  <div class="guida-section" id="guida-servizi">
+    <div class="guida-section-header" onclick="guidaToggleSection('servizi')">
+      <h3 class="guida-section-title">SERVIZI - Esempi pratici per ogni utenza</h3><span class="guida-toggle-icon">▼</span>
+    </div>
+    <div class="guida-section-content">
+      <div class="guida-subsection">
+        <h4>Per gli Studenti</h4>
+        <ul>
+          <li><strong>Libri di testo a.s. 25/26</strong> – elenchi per classe</li>
+          <li><strong>Orario lezioni</strong> – aggiornato durante l’anno</li>
+          <li><strong>Registro elettronico (ARGO)</strong> – voti, assenze, compiti</li>
+          <li><strong>PCTO</strong> – info e calendario attività</li>
+          <li><strong>Carta dello Studente</strong> – agevolazioni</li>
+          <li><strong>Curriculum dello Studente</strong> – per Esami di Stato</li>
+          <li><strong>Supporto tecnico</strong> – problemi account/registro</li>
+        </ul>
+      </div>
+
+      <div class="guida-subsection">
+        <h4>Per le Famiglie</h4>
+        <ul>
+          <li><strong>Registro elettronico – parte famiglia</strong> (monitoraggio andamenti)</li>
+          <li><strong>Prenotazione colloqui</strong> con i docenti</li>
+          <li><strong>Pagamenti</strong> – PagoPA / Pago in Rete (con IUV)</li>
+          <li><strong>Circolari per categoria</strong> – famiglie/studenti</li>
+          <li><strong>Autorizzazioni online</strong> – uscite e attività</li>
+          <li><strong>Sportello famiglie</strong> e orientamento</li>
+        </ul>
+      </div>
+
+      <div class="guida-subsection">
+        <h4>Per i Docenti</h4>
+        <ul>
+          <li><strong>Registro digitale</strong> – voti, presenze, programmazioni</li>
+          <li><strong>Piano delle attività</strong> collegiali</li>
+          <li><strong>Materiali didattici</strong> e piattaforme e‑learning</li>
+          <li><strong>Scrutini online</strong> e adempimenti</li>
+          <li><strong>PCTO – gestione</strong> e modulistica</li>
+          <li><strong>Formazione</strong> e sostituzioni colleghi</li>
+        </ul>
+      </div>
+
+      <div class="guida-subsection">
+        <h4>Per il Personale ATA</h4>
+        <ul>
+          <li>Ufficio Didattica e Protocollo – fasce di ricevimento</li>
+          <li>Ufficio Personale – orari e contatti</li>
+          <li>Gestione inventario, spazi, manutenzioni e sistemi informatici</li>
+          <li>Supporto ai laboratori e sicurezza</li>
+        </ul>
+      </div>
+
+      <div class="guida-highlight-box">
+        <strong>Accesso rapido ai servizi:</strong><br>
+        Studenti/Famiglie: Registro, Libri, Pagamenti, Modulistica – Docenti: Registro, Piano attività, Scrutini, PCTO – ATA: Spazi, inventario, supporto informatico.
+      </div>
+
+      <div class="guida-tips">
+        <h4>Esempi utili</h4>
+        <ul>
+          <li><strong>Pagare un avviso</strong>: entra nel tuo home banking → sezione PagoPA → inserisci <em>Codice IUV</em> → autorizza → scarica ricevuta.</li>
+          <li><strong>Richiedere un certificato</strong>: scrivi all’Ufficio Didattica indicando nome, classe e uso del certificato.</li>
+          <li><strong>Problemi ARGO</strong>: contatta la segreteria; specifica utente e messaggio d’errore.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ORIENTAMENTO -->
+  <div class="guida-section" id="guida-orientamento">
+    <div class="guida-section-header" onclick="guidaToggleSection('orientamento')">
+      <h3 class="guida-section-title">ORIENTAMENTO - Il Tuo Futuro Inizia Qui</h3><span class="guida-toggle-icon">▼</span>
+    </div>
+    <div class="guida-section-content">
+      <div class="guida-subsection">
+        <h4>Orientamento in Entrata</h4>
+        <ul>
+          <li>Open Day e visite guidate</li>
+          <li>Presentazioni dei percorsi</li>
+          <li>Materiali informativi</li>
+        </ul>
+      </div>
+      <div class="guida-subsection">
+        <h4>Orientamento in Uscita</h4>
+        <ul>
+          <li>ITS/IFTS, Università, ordini professionali</li>
+          <li>Mondo del lavoro e PCTO</li>
+        </ul>
+      </div>
+      <div class="guida-subsection">
+        <h4>Progetti Internazionali</h4>
+        <ul>
+          <li>Progetti e stage linguistici</li>
+          <li>Certificazioni</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- COMUNICATI -->
+  <div class="guida-section" id="guida-comunicati">
+    <div class="guida-section-header" onclick="guidaToggleSection('comunicati')">
+      <h3 class="guida-section-title">COMUNICATI - Notizie e Rassegna</h3><span class="guida-toggle-icon">▼</span>
+    </div>
+    <div class="guida-section-content">
+      <div class="guida-subsection">
+        <h4>Comunicati stampa</h4>
+        <ul><li>Avvisi e comunicazioni ufficiali</li></ul>
+      </div>
+      <div class="guida-subsection">
+        <h4>Notizie e attualità</h4>
+        <ul><li>Eventi, progetti, premi e riconoscimenti</li></ul>
+      </div>
+      <div class="guida-subsection">
+        <h4>Rassegna stampa</h4>
+        <ul><li>Articoli e interviste sulla scuola</li></ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- COMUNICAZIONI -->
+  <div class="guida-section" id="guida-comunicazioni">
+    <div class="guida-section-header" onclick="guidaToggleSection('comunicazioni')">
+      <h3 class="guida-section-title">CIRCOLARI E ALBO - Documenti Ufficiali</h3><span class="guida-toggle-icon">▼</span>
+    </div>
+    <div class="guida-section-content">
+      <div class="guida-subsection">
+        <h4>Circolari</h4>
+        <ul>
+          <li>Filtri per data, categoria e parole chiave</li>
+          <li>Archivio storico</li>
+        </ul>
+      </div>
+      <div class="guida-subsection">
+        <h4>Albo Pretorio</h4>
+        <ul>
+          <li>Bandi, graduatorie, delibere e atti legali</li>
+        </ul>
+      </div>
+      <div class="guida-highlight-box">
+        <strong>Tip:</strong> usa i filtri per trovare subito ciò che cerchi.
+      </div>
+    </div>
+  </div>
+
+  <!-- TUTORIAL -->
+  <div class="guida-section" id="guida-tutorial">
+    <div class="guida-section-header" onclick="guidaToggleSection('tutorial')">
+      <h3 class="guida-section-title">GUIDA PASSO PASSO - Tutorial Pratici</h3><span class="guida-toggle-icon">▼</span>
+    </div>
+    <div class="guida-section-content">
+      <div class="guida-subsection">
+        <h4>[RICERCA] Orario delle lezioni</h4>
+        <ol>
+          <li>Vai su “SERVIZI” → “Orario lezioni”</li>
+          <li>Seleziona la tua classe e scarica il PDF</li>
+        </ol>
+      </div>
+      <div class="guida-subsection">
+        <h4>[LIBRI] Elenco libri di testo</h4>
+        <ol>
+          <li>“SERVIZI” → “Libri di testo a.s. 25/26”</li>
+          <li>Scegli indirizzo e classe → scarica</li>
+        </ol>
+      </div>
+      <div class="guida-subsection">
+        <h4>[REGISTRO] Accesso ARGO</h4>
+        <ol>
+          <li>“SERVIZI” → “Registro Elettronico”</li>
+          <li>Inserisci credenziali → profilo studente/genitore/docente</li>
+        </ol>
+        <div class="guida-tips">
+          <strong>Se non accedi:</strong> verifica credenziali e connessione; per il reset contatta la segreteria.
+        </div>
+      </div>
+      <div class="guida-subsection">
+        <h4>[PAGAMENTI] Pago in Rete / PagoPA</h4>
+        <ol>
+          <li>Entra in PagoPA (o Home Banking → sezione PagoPA)</li>
+          <li>Inserisci <strong>Codice IUV</strong> dell’avviso → conferma → scarica ricevuta.</li>
+        </ol>
+      </div>
+      <div class="guida-subsection">
+        <h4>[CONTATTI] Quando chiamare gli uffici</h4>
+        <ul>
+          <li>Ufficio Didattica e Protocollo: 8:00‑9:00 (docenti/genitori), 10:55‑11:30 (alunni), 13:00‑14:00.</li>
+        </ul>
+      </div>
+
+      <div class="guida-tips">
+        <h4>[AIUTO] Se non trovi qualcosa</h4>
+        <ol>
+          <li>Usa la ricerca del browser (Ctrl/Cmd + F)</li>
+          <li>Ricontrolla la homepage e le circolari</li>
+          <li>Scrivi alla segreteria con una descrizione chiara</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTATTI -->
+  <div class="guida-section" id="guida-contatti">
+    <div class="guida-section-header" onclick="guidaToggleSection('contatti')">
+      <h3 class="guida-section-title">CONTATTI E INFORMAZIONI PRATICHE</h3><span class="guida-toggle-icon">▼</span>
+    </div>
+    <div class="guida-section-content">
+      <div class="guida-contact-grid">
+        <div class="guida-contact-card">
+          <h4>Sede principale</h4>
+          <p><strong>Via Ferrazzi, 15</strong><br>20020 Villa Cortese (MI)</p>
+        </div>
+        <div class="guida-contact-card">
+          <h4>Ufficio Didattica e Protocollo</h4>
+          <p><strong>0331 434311</strong><br>
+            <strong>Orari (lun-ven)</strong><br>
+            8:00-9:00 (docenti/genitori)<br>10:55-11:30 (alunni)<br>13:00-14:00
+          </p>
+        </div>
+        <div class="guida-contact-card">
+          <h4>Segreteria Didattica</h4>
+          <p>didattica@agrariomendel.it</p>
+        </div>
+        <div class="guida-contact-card">
+          <h4>Ufficio Vicepresidenza</h4>
+          <p>vicepresidenza@agrariomendel.it</p>
+        </div>
+        <div class="guida-contact-card">
+          <h4>Email istituzionali</h4>
+          <p>miis08300x@istruzione.it<br>PEC: miis08300x@pec.istruzione.it</p>
+        </div>
+        <div class="guida-contact-card">
+          <h4>Uffici</h4>
+          <p>Didattica, Personale, Amministrazione – contatti e orari sul sito</p>
+        </div>
+      </div>
+
+      <div class="guida-tips">
+        <strong>Quando scrivi o chiami:</strong> indica nome e cognome dello studente, classe e una descrizione chiara della richiesta.
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer richiesto -->
+  <div class="guida-footer">
+    IIS Mendel - Via Ferrazzi 15 20035 Villa Cortese (MI) - Progetto "Buone pratiche" PNRR "Scuola Futura" - Sviluppato dal Team Buone Pratiche IIS MENDEL
+  </div>
+
+  <!-- Scroll to Top -->
+  <button class="guida-scroll-top" id="guidaScrollTop" onclick="guidaScrollToTop()" title="Torna all'inizio">↑</button>
+</div>
+
+<script>
+  // Se il pulsante ha href="#" usa l'URL corrente, così su GitHub Pages apre la stessa pagina in una nuova scheda
+  (function(){
+    const a=document.getElementById('ctaFullscreen');
+    if(a && (!a.getAttribute('href') || a.getAttribute('href')==='#')){
+      a.setAttribute('href', window.location.href);
+    }
+  })();
+
+  // Navigazione interna
+  function guidaGoToSection(sectionId){
+    const target=document.getElementById('guida-'+sectionId);
+    if(target){
+      target.scrollIntoView({behavior:'smooth'});
+      if(!target.classList.contains('active')) target.classList.add('active');
+    }
+  }
+
+  // Toggle sezioni
+  function guidaToggleSection(sectionId){
+    const section=document.getElementById('guida-'+sectionId);
+    section?.classList.toggle('active');
+  }
+
+  // Scroll to Top
+  function guidaScrollToTop(){ window.scrollTo({top:0,behavior:'smooth'}); }
+
+  // Mostra/nascondi pulsante scroll to top
+  window.addEventListener('scroll',()=>{
+    const b=document.getElementById('guidaScrollTop');
+    if(!b) return;
+    if(window.pageYOffset>300) b.classList.add('visible'); else b.classList.remove('visible');
+  });
+
+  // Apri la prima sezione di default
+  document.addEventListener('DOMContentLoaded',()=>{
+    document.getElementById('guida-homepage')?.classList.add('active');
+  });
+</script>
+</body>
+</html>
